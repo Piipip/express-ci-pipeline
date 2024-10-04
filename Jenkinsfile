@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the repository
-                git 'https://github.com/Piipip/expressci-pipeline.git'
+                git 'https://github.com/Piipip/express-ci-pipeline.git'
             }
         }
         stage('Build') {
