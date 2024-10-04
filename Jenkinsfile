@@ -20,7 +20,7 @@ pipeline {
             steps {
                 // Run tests (you can replace this with your actual test command)
                 script {
-                    sh 'npm test' // Make sure you have tests defined
+                    sh 'npm run test' // Make sure you have tests defined
                 }
             }
         }
