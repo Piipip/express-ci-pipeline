@@ -1,32 +1,39 @@
 pipeline {
     agent any 
 
+    environment {
+        DOCKER_IMAGE = "expressci-app"
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                // Clone the repository
-                git 'https://github.com/Piipip/express-ci-pipeline.git'
+                git branch: 'main', url: 'https://github.com/Piipip/express-ci-pipeline.git'
             }
         }
+
         stage('Build') {
             steps {
-                // Build Docker image
                 script {
-                    def app = docker.build("expressci-app:${env.BUILD_ID}")
+                    app = docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}")
                 }
             }
         }
+
         stage('Test') {
             steps {
-                // Run tests (you can replace this with your actual test command)
                 script {
-                    sh 'npm test' // Make sure you have tests defined
+                    // Run tests inside a Node.js container
+                    docker.image('node:14').inside {
+                        sh 'npm install'
+                        sh 'npm test'
+                    }
                 }
             }
         }
+
         stage('Deploy') {
             steps {
-                // Push Docker image to Docker Hub
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
                         app.push("latest")
@@ -39,13 +46,10 @@ pipeline {
 
     post {
         success {
-            // Notify on success (optional)
             echo 'Build completed successfully!'
         }
         failure {
-            // Notify on failure (optional)
             echo 'Build failed!'
         }
     }
 }
-
