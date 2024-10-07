@@ -14,32 +14,23 @@ pipeline {
 
         stage('Build') {
             steps {
-                script {
-                    app = docker.build("${DOCKER_IMAGE}:${env.BUILD_ID}")
-                }
+                sh "docker build -t ${DOCKER_IMAGE}:${env.BUILD_ID} ."
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    // Run tests inside a Node.js container
-                    docker.image('node:14').inside {
-                        sh 'chown -R 113:120 /root/.npm'
-                        sh 'npm install'
-                        sh 'npm test'
-                    }
-                }
+                sh "docker run --rm ${DOCKER_IMAGE}:${env.BUILD_ID} npm test"
             }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
-                        app.push("latest")
-                        app.push("${env.BUILD_ID}")
-                    }
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
+                    sh "docker push ${DOCKER_IMAGE}:${env.BUILD_ID}"
+                    sh "docker tag ${DOCKER_IMAGE}:${env.BUILD_ID} ${DOCKER_IMAGE}:latest"
+                    sh "docker push ${DOCKER_IMAGE}:latest"
                 }
             }
         }
