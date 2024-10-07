@@ -1,27 +1,23 @@
-# Use official Node.js image
 FROM node:14
 
-USER root
-RUN mkdir -p /root/.npm && chown -R 1000:1000 /root/.npm
-USER node
-
-# Set working directory
+# Create app directory
 WORKDIR /usr/src/app
 
-# Copy package.json and install dependencies
-COPY package*.json ./
+# Create a non-root user and switch to it
+RUN adduser --disabled-password --gecos '' appuser && \
+    chown -R appuser:appuser /usr/src/app
+USER appuser
 
-# Change ownership of the .npm folder to avoid permission issues
-RUN chown -R node:node /root/.npm
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+COPY --chown=appuser:appuser package*.json ./
 
-# Install dependencies
 RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
 
-# Copy the rest of the application
-COPY . .
+# Bundle app source
+COPY --chown=appuser:appuser . .
 
-# Expose port 3000
-EXPOSE 3000
-
-# Start the app
-CMD ["npm", "start"]
+EXPOSE 8080
+CMD [ "node", "server.js" ]
