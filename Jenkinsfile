@@ -25,7 +25,7 @@ pipeline {
                 script {
                     // Run tests inside a Node.js container
                     docker.image('node:14').inside {
-                        sh 'chown -R 113:120 /.npm'
+                        sh 'chown -R 113:120 /root/.npm'
                         sh 'npm install'
                         sh 'npm test'
                     }
