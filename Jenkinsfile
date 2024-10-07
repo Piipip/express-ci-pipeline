@@ -34,9 +34,10 @@ pipeline {
                         docker tag ${DOCKER_IMAGE}:${BUILD_ID} ${DOCKER_IMAGE}:latest
                         docker push ${DOCKER_IMAGE}:latest
                     '''
-            }
-        }
-    }
+                } 
+            } 
+        } 
+    } 
 
     post {
         success {
