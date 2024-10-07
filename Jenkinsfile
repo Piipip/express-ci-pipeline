@@ -6,16 +6,38 @@ pipeline {
         DOCKER_REGISTRY = "docker.io"
     }
 
+    options {
+        skipDefaultCheckout()
+        preserveStashes()
+    }
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Piipip/express-ci-pipeline.git'
+                checkout scm
+            }
+        }
+
+        stage('Cache Dependencies') {
+            steps {
+                script {
+                    if (fileExists('.npm-cache')) {
+                        unstash 'npm-cache'
+                    } else {
+                        sh 'npm ci'
+                        stash includes: 'node_modules/**/*', name: 'npm-cache'
+                    }
+                }
             }
         }
 
         stage('Build') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE}:${env.BUILD_ID} ."
+                script {
+                    def dockerArgs = "--cache-from ${DOCKER_IMAGE}:latest"
+                    sh "docker pull ${DOCKER_IMAGE}:latest || true"
+                    sh "docker build ${dockerArgs} -t ${DOCKER_IMAGE}:${env.BUILD_ID} ."
+                }
             }
         }
 
@@ -49,6 +71,9 @@ pipeline {
             mail to: 'your-email@example.com',
                  subject: "FAILURE: ${currentBuild.fullDisplayName}",
                  body: "Build failed. Please check the logs."
+        }
+        always {
+            cleanWs()
         }
     }
 }
