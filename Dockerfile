@@ -19,5 +19,5 @@ RUN npm install
 # Bundle app source
 COPY --chown=appuser:appuser . .
 
-EXPOSE 8080
-CMD [ "node", "server.js" ]
+EXPOSE 3000
+CMD [ "npm", "start" ]
