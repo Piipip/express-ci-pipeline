@@ -1,6 +1,10 @@
 # Use official Node.js image
 FROM node:14
 
+USER root
+RUN mkdir -p /root/.npm && chown -R 1000:1000 /root/.npm
+USER node
+
 # Set working directory
 WORKDIR /usr/src/app
 
