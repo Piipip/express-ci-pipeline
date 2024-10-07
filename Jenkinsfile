@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent any
 
     environment {
         DOCKER_IMAGE = "kwakowus/expressci-app"
@@ -34,17 +34,21 @@ pipeline {
                         docker tag ${DOCKER_IMAGE}:${BUILD_ID} ${DOCKER_IMAGE}:latest
                         docker push ${DOCKER_IMAGE}:latest
                     '''
-                } 
-            } 
-        } 
-    } 
+                }
+            }
+        }
+    }
 
     post {
         success {
-            echo 'Build completed successfully!'
+            mail to: 'your-email@example.com',
+                 subject: "SUCCESS: ${currentBuild.fullDisplayName}",
+                 body: "Build completed successfully!"
         }
         failure {
-            echo 'Build failed!'
+            mail to: 'your-email@example.com',
+                 subject: "FAILURE: ${currentBuild.fullDisplayName}",
+                 body: "Build failed. Please check the logs."
         }
     }
 }
