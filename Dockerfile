@@ -1,22 +1,38 @@
-FROM node:14
+# Use the official Node.js 14 image as a parent image
+FROM node:14-alpine AS build
 
-# Create app directory
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install only production dependencies
+RUN npm ci --only=production
+
+# Copy the rest of your app's source code
+COPY . .
+
+# Build your app
+RUN npm run build
+
+# Start a new stage for a smaller production image
+FROM node:14-alpine
+
+# Set the working directory
 WORKDIR /usr/src/app
 
 # Create a non-root user and switch to it
-RUN adduser --disabled-password --gecos '' appuser && \
-    chown -R appuser:appuser /usr/src/app
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY --chown=appuser:appuser package*.json ./
+# Copy only the built artifacts and production dependencies from the previous stage
+COPY --from=build --chown=appuser:appgroup /usr/src/app/node_modules ./node_modules
+COPY --from=build --chown=appuser:appgroup /usr/src/app/dist ./dist
+COPY --chown=appuser:appgroup package*.json ./
 
-# Install all dependencies, including devDependencies
-RUN npm install
-
-# Bundle app source
-COPY --chown=appuser:appuser . .
-
+# Expose the port the app runs on
 EXPOSE 3000
-CMD [ "npm", "start" ]
+
+# Command to run the app
+CMD ["node", "dist/index.js"]
