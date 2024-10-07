@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
     environment {
-        DOCKER_IMAGE = "expressci-app"
+        DOCKER_IMAGE = "expressci--app"
         DOCKER_REGISTRY = "docker.io"
     }
 
