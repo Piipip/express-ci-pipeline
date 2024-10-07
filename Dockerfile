@@ -6,6 +6,11 @@ WORKDIR /usr/src/app
 
 # Copy package.json and install dependencies
 COPY package*.json ./
+
+# Change ownership of the .npm folder to avoid permission issues
+RUN chown -R node:node /root/.npm
+
+# Install dependencies
 RUN npm install
 
 # Copy the rest of the application
