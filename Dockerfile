@@ -27,9 +27,9 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
 
 # Copy only the built artifacts and production dependencies from the previous stage
-COPY --from=build --chown=appuser:appgroup /usr/src/app/node_modules ./node_modules
-COPY --from=build --chown=appuser:appgroup /usr/src/app/dist ./dist
 COPY --chown=appuser:appgroup package*.json ./
+COPY --from=build --chown=appuser:appgroup /usr/src/app/node_modules ./node_modules
+COPY --from=build /usr/src/app/ ./
 
 # Expose the port the app runs on
 EXPOSE 3000
