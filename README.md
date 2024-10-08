@@ -10,7 +10,7 @@ This is a basic Express.js application with a CI/CD pipeline set up. It's design
 
 - Express.js web server
 - Automated testing with Jest
-- CI/CD pipeline using Jenkins (or your specific CI tool)
+- CI/CD pipeline using Jenkins 
 - Dockerized application for easy deployment
 
 ## Prerequisites
@@ -19,6 +19,7 @@ This is a basic Express.js application with a CI/CD pipeline set up. It's design
 - npm (usually comes with Node.js)
 - Docker (for containerization)
 - Jenkins (or your specific CI tool)
+- Github (for version control)
 
 ## Getting Started
 
@@ -64,7 +65,7 @@ To build and run the Docker container:
 
 ## CI/CD Pipeline
 
-This project includes a Jenkins pipeline (or your specific CI tool) configuration. The pipeline typically includes the following stages:
+This project includes a Jenkins pipeline  configuration. The pipeline typically includes the following stages:
 
 1. Checkout
 2. Install Dependencies
@@ -72,7 +73,7 @@ This project includes a Jenkins pipeline (or your specific CI tool) configuratio
 4. Build Docker Image
 5. Deploy (if applicable)
 
-Refer to the `Jenkinsfile` (or your specific pipeline configuration file) for more details.
+Refer to the `Jenkinsfile` for more details.
 
 ## Contributing
 
@@ -83,11 +84,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 This project is open source and available under the [MIT License](LICENSE).
 
 ## Author's Contact Details
-Philip Koranteng
-[philipkorans@yahoo.com]
-
-## Links to Social Media or Other Projects
-LinkedIn Profile
-GitHub Profile [https://github.com/Piipip]
+[Mail](philipkorans@yahoo.com)
+[Github](https://github.com/Piipip)
 
 
