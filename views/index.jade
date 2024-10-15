@@ -2,4 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+
+  h2 Description
+  p= description
+
+  h2 Architecture Breakdown
+  p= architecture
+
+  h2 Development Report
+  h3 Successes
+  p= report.successes
+  h3 Challenges
+  p= report.challenges
+  h3 Lessons Learned
+  p= report.lessons
+  h3 Next Steps
+  p= report.nextSteps
+
+  h2 Conclusion
+  p= conclusion
