@@ -65,8 +65,8 @@ pipeline {
                     sh '''
                         ssh -o StrictHostKeyChecking=no root@142.93.115.8 "
                             docker pull ${DOCKER_IMAGE}:latest
-                            docker-compose -f /prod-env/docker-compose.yml down
-                            docker-compose -f /prod-env/docker-compose.yml up -d
+                            docker-compose -f /root/prod-env/docker-compose.yml down
+                            docker-compose -f /root/prod-env/docker-compose.yml up -d
                         "
                     '''
                 }
