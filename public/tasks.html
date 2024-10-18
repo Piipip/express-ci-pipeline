@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks - CI/CD Pipeline Project Documentation</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <h1>CI/CD Pipeline Project Documentation</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="project-overview.html">Project Overview</a></li>
+            <li><a href="tasks.html" class="active">Tasks</a></li>
+            <li><a href="report.html">Report</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Backlog of Sequential Tasks for CI/CD Pipeline Project</h2>
+        <div class="task">
+            <h3>Task 1: Set Up Project Environment</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I created an Express.js application using the Express generator and initialized a GitHub repository for version control.</li>
+                <li>After pushing the initial code, I set the foundation for my CI/CD pipeline.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 2: Initialize GitHub Repository</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I created a GitHub repository for the application code.</li>
+                <li>I pushed the initial code to ensure version control and collaboration.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 3: Install Jenkins</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I installed Jenkins on my server.</li>
+                <li>I followed the official documentation to configure it properly for my CI/CD pipeline.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 4: Install Docker</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I installed Docker on my server to facilitate containerization of the Express.js application.</li>
+                <li>This allows for consistent deployment across environments.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 5: Write Dockerfile for Express.js App</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I created a Dockerfile that defines how to containerize my Express.js application.</li>
+                <li>I ensured that all dependencies are included for deployment.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 6: Push Docker Image to Docker Hub</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I created a Docker Hub account.</li>
+                <li>I pushed the Docker image to my repository, making it accessible for deployment.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 7: Write Jenkinsfile for CI/CD Pipeline</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I wrote a Jenkinsfile to define the stages of the CI/CD pipeline.</li>
+                <li>This includes build, test, and deployment steps necessary for automating the process.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 8: Configure GitHub Webhook for Jenkins</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I set up a GitHub webhook to trigger Jenkins jobs automatically.</li>
+                <li>This ensures that code changes enable continuous integration.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 9: Configure Jenkins Pipeline</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I integrated the Jenkinsfile and Docker steps into the pipeline.</li>
+                <li>I added environment variables and security configurations for credentials and API tokens.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 10: Test the Pipeline with a Small Code Change</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I pushed a small code change to GitHub to verify that the Jenkins pipeline ran as expected.</li>
+                <li>This ensured that the automated build and deployment processes were functioning correctly.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 11: Write and Add Unit Tests for Express.js App</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I installed Jest for testing.</li>
+                <li>I wrote unit tests for critical parts of the Express.js application, focusing on GET and POST request functionalities.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 12: Integrate Unit Tests into Jenkins Pipeline</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I incorporated the test command into the Jenkins pipeline.</li>
+                <li>This ensured that unit tests ran automatically as part of the CI/CD process.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 13: Set Up Cloud Provider (Optional)</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I created an account with a cloud provider.</li>
+                <li>I set up a cloud server (like AWS or Digital Ocean) for deploying the Dockerized application in a production-like environment.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 14: Deploy Dockerized App to the Cloud Server</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I used Docker Compose or similar tools to deploy the Dockerized application to the cloud server.</li>
+                <li>I ensured that it was accessible in a live environment.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 15: Test Deployment on the Cloud</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I verified that the deployed application was accessible via a URL.</li>
+                <li>I ensured it was functioning correctly in the cloud environment.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 16: Add Error Notifications in Jenkins</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I set up error notifications in Jenkins (e.g., via Slack or email).</li>
+                <li>This enhanced the monitoring of the CI/CD process.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 17: Optimize Dockerfile for Production</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I optimized the Dockerfile to minimize image size.</li>
+                <li>I improved build speed, ensuring that the application was efficient for production use.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 18: Review Security Practices</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I reviewed security practices to ensure sensitive environment variables and credentials were securely handled in the pipeline.</li>
+                <li>I adhered to best practices.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 19: Optimize Pipeline for Performance</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I investigated potential optimizations for the pipeline.</li>
+                <li>I looked into caching, parallel stages, and other methods to improve overall performance and efficiency.</li>
+            </ol>
+        </div>
+        
+        <div class="task">
+            <h3>Task 20: Final Testing and Demo Preparation</h3>
+            <p>Steps taken:</p>
+            <ol>
+                <li>I conducted thorough final testing of the entire CI/CD pipeline.</li>
+                <li>I prepared for a demo, ensuring that the end-to-end workflow from code commit to deployment was seamless and reliable.</li>
+            </ol>
+        </div>
+        
+        
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 Philip Owusu Koranteng All rights reserved.</p>
+    </footer>
+    <div class="navigation">
+        <a href="project-overview.html" class="prev">&larr; Previous: Project Overview</a>
+        <a href="report.html" class="next">Next: Report &rarr;</a>
+    </div>
+</body>
+</html>

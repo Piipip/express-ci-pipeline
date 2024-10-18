@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Overview - CI/CD Pipeline Project Documentation</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <h1>CI/CD Pipeline Project Documentation</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="project-overview.html" class="active">Project Overview</a></li>
+            <li><a href="tasks.html">Tasks</a></li>
+            <li><a href="report.html">Report</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2 id="intro">Continuous Integration/Continuous Deployment (CI/CD) Pipeline</h2>
+        <h3 id="project-desc">Project Description</h3>
+        <p>This project implements a Continuous Integration/Continuous Deployment (CI/CD) pipeline for a Node.js application built with Express.js. The application was generated using the Express generator, providing a robust foundation for web development. The pipeline automates the build, test, and deployment processes using Jenkins, Docker, and GitHub, ensuring efficient and reliable software delivery.</p>
+
+        <h3 id="key-steps">Key Steps to Successful Automation</h3>
+        <ol>
+            <li>Set Up the DevOps Tools</li>
+            <li>Create a Sample Application</li>
+            <li>Design the CI/CD Pipeline Structure</li>
+            <li>Pipeline as Code</li>
+            <li>Security and Notifications</li>
+            <li>Monitoring and Logs</li>
+            <li>Optimization and Scaling</li>
+        </ol>
+
+        <h3 id="main-objective">Main Objective</h3>
+        <p>The objective of this project is to create a fully automated CI/CD pipeline that:</p>
+        <ul>
+            <li>Builds the Express.js app whenever new code is pushed to GitHub.</li>
+            <li>Tests the app to ensure quality and stability.</li>
+            <li>Automatically deploys the app using Docker to a test or production environment.</li>
+        </ul>
+
+        <h3 id="tech-stack">How the Tech Stack Works Together</h3>
+        <ol>
+            <li>Code Development(GitHub)</li>
+                <ul>
+                    <li>Developers push changes (e.g, new features, bug fixes) to the Github repository.</li>
+                </ul>
+            <li>CI Process(Jenkins): </li>
+                <ul>
+                    <li>Jennkins triggers the pipeline upon receiving a Github webhook</li>
+                    <li>Build: Jenkins clones the repository and builds the app according to the <b>Dockerfile</b>, creating a Docker image.</li>
+                    <li>Test: Jenkins runs automated tests (e.g, <b>npm test</b>). If tests fail, the pipeline stops and notifications are sent.</li>
+                    <li>Deploy: If tests pass, Jenkins pushes the Docker image to a container registry and deploys the container to a target environment.</li>
+                </ul>
+        </ol>
+
+        <h3 id="monitoring">Monitoring and Notifications</h3>
+        <ul>
+            <li>Jenkins will be configured to send notifications regarding build success or failure.</li> 
+            <li>Logs from Jenkins and Docker containers will provide insight into the build, test, and deployment processes.</li>
+            </ul>
+    </main>
+    <footer>
+        <p>&copy; 2024 Philip Owusu Koranteng. All rights reserved.</p>
+    </footer>
+    <div class="navigation">
+        <a href="index.html" class="prev">&larr; Previous: Home</a>
+        <a href="tasks.html" class="next">Next: Tasks &rarr;</a>
+    </div>
+</body>
+</html>

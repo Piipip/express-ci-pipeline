@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report - CI/CD Pipeline Project Documentation</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+<body>
+    <header>
+        <h1>CI/CD Pipeline Project Documentation</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="project-overview.html">Project Overview</a></li>
+            <li><a href="tasks.html">Tasks</a></li>
+            <li><a href="report.html" class="active">Report</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <h2 id="weekly-plan">Weekly Work Plan</h2>
+        
+        
+        <h2>Week 1</h2>
+        <ul>
+            <li><strong>Day 1:</strong> Create Express.js app, set up GitHub repository, push initial code.</li>
+            <li><strong>Day 2:</strong> Install and configure Jenkins, create pipeline in Jenkins.</li>
+            <li><strong>Day 3:</strong> Write Dockerfile, containerize app, push image to Docker Hub.</li>
+            <li><strong>Day 4:</strong> Set up Jenkins integration with Docker, test containerization.</li>
+            <li><strong>Day 5:</strong> Configure GitHub webhook to trigger Jenkins pipeline, debug if necessary.</li>
+        </ul>
+
+        <h2>Week 2</h2>
+        <ul>
+            <li><strong>Day 1:</strong> Add unit tests for Express.js app, integrate tests into Jenkins pipeline.</li>
+            <li><strong>Day 2:</strong> Test automated pipeline with a small code change.</li>
+            <li><strong>Day 3:</strong> Set up cloud server using Digital Ocean, deploy Dockerized app to the cloud.</li>
+            <li><strong>Day 4:</strong> Test the entire CI/CD process, from GitHub push to cloud deployment.</li>
+            <li><strong>Day 5:</strong> Review results, implement error notifications, optimize Docker image.</li>
+        </ul>
+        
+        <h2 id="developments">A report of my developments</h2>
+        <ul>
+            <li><strong>Highlighting my successes</strong></li>
+            <p>
+                I properly configure Jenkins to respond to GitHub webhooks, ensuring seamless automation. I focus on writing a well-optimized Dockerfile that reduces image size. Additionally, I securely handle environment variables, credentials, and other sensitive information in the CI/CD pipeline. I build a system that detects and reports errors in real-time, ensuring effective error notifications. Lastly, I ensure that Docker images are optimized for fast deployment while maintaining performance.
+            </p>
+            
+            <li><strong>Areas for improvement</strong></li>
+            <p>
+                I recognize the need for better error handling mechanisms to capture failures during builds and deployments effectively. Additionally, enhancing my security management practices, particularly in securely managing environment variables and credentials, is critical to safeguarding sensitive information in the CI/CD pipeline.
+            </p>
+            
+            <li><strong>Lessons learned</strong></li>
+            <p>
+                I have implemented an automated CI/CD pipeline that enables continuous integration, testing, and deployment through Jenkins. Using Docker for containerized deployments ensures consistency between development, testing, and production environments. Setting up GitHub webhooks automatically triggers the Jenkins pipeline on every code change. Robust error handling and notifications help me receive alerts via email or messaging tools for any failed builds, tests, or deployments.
+            </p>
+            
+            <li><strong>Next steps for this project:</strong></li>
+            <p>
+                I will implement rollback functionality for failed deployments to ensure system stability. Additionally, I plan to integrate performance tests, such as load testing, into the CI/CD pipeline. I will also explore implementing blue-green deployment to minimize downtime during updates. Furthermore, I intend to investigate Kubernetes for the orchestration of containerized deployments, enhancing scalability.
+            </p>
+        </ul>
+        
+        <h2 id="conclusion">Conclusion</h2>
+        <p>
+            This project successfully set up a strong Continuous Integration/Continuous Deployment (CI/CD) pipeline for an Express.js application. By using tools like Jenkins, Docker, and GitHub, I automated important processes such as building, testing, and deploying the application. This greatly improves efficiency and reliability in delivering software.
+        </p>
+
+        <p>
+            The process started with setting up the development environment and moved through different stages, including creating a Dockerfile and adding automated testing. Each step was carefully documented and tested to ensure that the pipeline works properly, allowing for smooth updates and improvements to the application.
+        </p>
+
+        <p>
+            Additionally, by including security measures and monitoring tools, the pipeline is ready to handle the demands of a production environment, ensuring that any problems can be quickly resolved. This project not only shows the benefits of DevOps practices but also provides a solid base for future improvements and scalability.
+        </p>
+
+        <p>
+            Overall, this CI/CD pipeline highlights the advantages of automation in modern software development, making it easier to continually improve and deliver in a fast-changing tech world. The knowledge gained from this project will definitely guide my future work in software development and DevOps.
+        </p>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Philip Owusu Koranteng. All rights reserved.</p>
+    </footer>
+    
+    <div class="navigation">
+        <a href="tasks.html" class="prev">&larr; Previous: Tasks</a>
+    </div>
+</body>
+</html>
