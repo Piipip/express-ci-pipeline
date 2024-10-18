@@ -61,7 +61,7 @@ pipeline {
                     }
                 }
                 // SSH into Production Environment and deploy the new image
-                sshagent(['your-ssh-credentials-id']) {
+                sshagent(['ssh-credentials']) {
                     sh '''
                         ssh -o StrictHostKeyChecking=no root@142.93.115.8 "
                             docker pull ${DOCKER_IMAGE}:latest
