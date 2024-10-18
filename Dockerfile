@@ -35,4 +35,4 @@ COPY --from=build /usr/src/app/ ./
 EXPOSE 3000
 
 # Command to run the app
-CMD ["node", "dist/index.js"]
+CMD ["node", "index.js"]
