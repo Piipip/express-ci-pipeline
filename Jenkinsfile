@@ -50,11 +50,24 @@ pipeline {
         stage('Deploy') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    script {
+                        // Login to Docker Hub
+                        sh '''
+                            echo "$DOCKER_PASS" | docker login ${DOCKER_REGISTRY} -u "$DOCKER_USER" --password-stdin
+                            docker push ${DOCKER_IMAGE}:${BUILD_ID}
+                            docker tag ${DOCKER_IMAGE}:${BUILD_ID} ${DOCKER_IMAGE}:latest
+                            docker push ${DOCKER_IMAGE}:latest
+                        '''
+                    }
+                }
+                // SSH into Production Environment and deploy the new image
+                sshagent(['your-ssh-credentials-id']) {
                     sh '''
-                        echo "$DOCKER_PASS" | docker login ${DOCKER_REGISTRY} -u "$DOCKER_USER" --password-stdin
-                        docker push ${DOCKER_IMAGE}:${BUILD_ID}
-                        docker tag ${DOCKER_IMAGE}:${BUILD_ID} ${DOCKER_IMAGE}:latest
-                        docker push ${DOCKER_IMAGE}:latest
+                        ssh -o StrictHostKeyChecking=no root@142.93.115.8 "
+                            docker pull ${DOCKER_IMAGE}:latest
+                            docker-compose -f /prod-env/docker-compose.yml down
+                            docker-compose -f /prod-env/docker-compose.yml up -d
+                        "
                     '''
                 }
             }
@@ -63,12 +76,12 @@ pipeline {
 
     post {
         success {
-            mail to: 'your-email@example.com',
+            mail to: 'kwakowus77777@gmail.com',
                  subject: "SUCCESS: ${currentBuild.fullDisplayName}",
                  body: "Build completed successfully!"
         }
         failure {
-            mail to: 'your-email@example.com',
+            mail to: 'kwakowus77777@gmail.com',
                  subject: "FAILURE: ${currentBuild.fullDisplayName}",
                  body: "Build failed. Please check the logs."
         }
