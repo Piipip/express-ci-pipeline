@@ -65,11 +65,11 @@ pipeline {
                     sh '''
                         ssh -o StrictHostKeyChecking=no root@159.223.163.29 "
                             docker pull ${DOCKER_IMAGE}:latest
-                            if [ $(docker ps -aq -f name=expressci-app) ]; then
-                                docker stop expressci-app || true
-                                docker rm expressci-app || true
+                            if [ $(docker ps -aq -f name=expressci-app-prod) ]; then
+                                docker stop expressci-app-prod || true
+                                docker rm expressci-app-prod || true
                             fi
-                            docker run -d --name expressci-app -p 3000:3000 ${DOCKER_IMAGE}:latest
+                            docker run -d --name expressci-app-prod -p 3000:3000 ${DOCKER_IMAGE}:latest
                         "
                     '''
                 }
