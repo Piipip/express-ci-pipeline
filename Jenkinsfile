@@ -63,7 +63,7 @@ pipeline {
                 // SSH into Production Environment and deploy the new image
                 sshagent(['ssh-credentials']) {
                     sh '''
-                        ssh -o StrictHostKeyChecking=no root@142.93.115.8 "
+                        ssh -o StrictHostKeyChecking=no root@159.223.163.29 "
                             docker pull ${DOCKER_IMAGE}:latest
                             docker-compose -f /root/prod-env/docker-compose.yml down
                             docker-compose -f /root/prod-env/docker-compose.yml up -d
