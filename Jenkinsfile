@@ -65,8 +65,9 @@ pipeline {
                     sh '''
                         ssh -o StrictHostKeyChecking=no root@159.223.163.29 "
                             docker pull ${DOCKER_IMAGE}:latest
-                            docker-compose -f /root/prod-env/docker-compose.yml down
-                            docker-compose -f /root/prod-env/docker-compose.yml up -d
+                            docker stop expressci-app || true
+                            docker rm expressci-app || true
+                            docker run -d --name expressci-app -p 3000:3000 ${DOCKER_IMAGE}:latest
                         "
                     '''
                 }
